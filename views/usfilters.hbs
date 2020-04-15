@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список пользователей</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://bootstraptema.ru/plugins/2015/bootstrap3/bootstrap.min.css" />
+<link rel="stylesheet" href="https://bootstraptema.ru/plugins/font-awesome/4-4-0/font-awesome.min.css" />
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+<link href="https://bootstraptema.ru/snippets/element/2020/bootstrap-table.css" rel="stylesheet" />
+<script src="https://bootstraptema.ru/plugins/jquery/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="http://bootstraptema.ru/plugins/2015/b-v3-3-6/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://bootstraptema.ru/snippets/element/2020/bootstrap-table.js"></script>
+<style>
+.menu{
+ float:left;
+}
+.menu{
+margin:4em 2em;
+margin-top: 150px;
+}
+.box{
+ position:absolute;
+ top:-1200px;
+ width:100%;
+ color:#fff;
+ margin:auto;
+ padding:0px;
+ z-index:999999;
+ text-align:right;
+ left:0;
+}
+a.boxclose{
+ cursor: pointer;
+ text-align: center;
+ display: block;
+ position: absolute;
+ top: 46px;
+ right: 320px;
+}
+.menu_box_list {
+ display: inline-block;
+ float: right;
+ margin-right: 35em;
+}
+.menu_box_list ul li {
+ display:inline-block;
+}
+.menu_box_list li a{
+ color: #fff;
+ font-size: 1.2em;
+ font-weight:400;
+ display: block;
+ padding:0.5em 0.5em;
+ text-decoration:none;
+ text-transform: uppercase;
+ -webkit-transition: all 0.5s ease-in-out;
+ -moz-transition: all 0.5s ease-in-out;
+ -o-transition: all 0.5s ease-in-out;
+ transition: all 0.5s ease-in-out;
+ letter-spacing: 0.1em;
+}
+.menu_box_list li a:hover,.menu_box_list ul li.active a{
+ color:#E74C3C;
+}
+.menu_box_list ul {
+ background:transparent;
+ padding:50px;
+}
+.menu_box_list li a > i > img{
+ vertical-align:middle;
+ padding-right:10px;
+}
+@media (max-width:1280px){ 
+a.boxclose {
+ right: 190px;
+}
+.menu_box_list {
+ margin-right: 25em;
+}
+}
+@media (max-width:1024px){ 
+a.boxclose {
+ right: 104px;
+}
+.menu_box_list {
+ margin-right: 14em;
+}
+}
+@media (max-width:768px){ 
+.menu_box_list {
+ margin-right: 3em;
+}
+a.boxclose {
+ right: 28px;
+ top:18px;
+}
+.menu_box_list ul li {
+ display:block;
+}
+.menu_box_list ul {
+ background:transparent;
+ padding:1em 20em;
+ margin:28px 0px;
+ text-align:center;
+}
+}
+@media (max-width:640px){ 
+.menu_box_list ul {
+padding: 1em 15em;
+}
+}
+@media (max-width:480px){ 
+.menu_box_list ul {
+ padding: 1em 9.5em;
+}
+}
+@media (max-width:320px){ 
+a.boxclose {
+ right: 15px;
+ top: 4px;
+}
+.menu_box_list ul {
+ padding: 0em 5.2em;
+ margin: 14px 0px;
+}
+.menu_box_list li a {
+ padding: 0.4em 0.5em;
+}
+.menu_box_list {
+ margin-right: 1em;
+}
+}
+</style>
+
+</head>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Головна <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users">Користувачі</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/events">Події</a>
+      </li>
+     
+    </ul>
+    
+   
+  </div>
+</nav>
+<body>
+    <div style="margin-top: 20px;margin-left:20px;margin-right:20px">
+    <h1>Список користувачів</h1>    
+    <form action="/finteres" method="post">
+            <label>Показати події за тегом </label> 
+  <select  style="width: 150px;margin-left: 20px;" name="interes" id="interes"class="form-control" >
+  <option>Ігри</option>
+  <option>Спорт</option>
+  <option>Кулінарія</option>
+  <option>Мандрівки</option>
+  <option>Вивчення мов</option>
+  <option>Фільми</option>
+  <option>Шопінг</option>
+  <option>Танці</option>
+  <option aria-checked="true">Не визначився</option>
+  </select>
+  <br>
+  <input type="submit" value="Фільтрувати за інтересом" style="width: 350px;"  target="_blank"  id="button" class="btn btn-primary btn-lg btn-block email-button" />
+            </form>
+             <form action="/fage" method="post">
+            <label>Показати користувачів віком від:</label> 
+            <input type="number" name="sage" class="form-control" style="width: 100px;" aria-valuemin="5" value="10" aria-valuemax="130" id="sage">
+            <br>
+            <label>До:</label> <input type="number" class="form-control" style="width: 100px;" aria-valuemax="130" aria-valuemin="5" value="25" name="eage" id="eage">
+ 
+  <br>
+  <input type="submit" value="Фільтрувати за віком" style="width: 250px;" target="_blank"  id="button" class="btn btn-primary btn-lg btn-block email-button" />
+            </form>
+ 
+ <table id="fresh-table" class="table" style="background: white;">
+ <thead>    
+ <th data-field="id" data-sortable="true">Код користувача</th>
+ <th data-field="name" data-sortable="true">Ім'я</th>
+ <th data-field="age" data-sortable="true">Вік</th>
+ <th data-field="interes" data-sortable="true">Інтереси</th>
+ <th data-field="description" data-sortable="true">Про себе</th>
+ </thead>
+ <tbody>
+    {{#each users}}
+    <tr><td>{{this._id}}</td><td>{{this.name}}</td><td>{{this.age}}</td><td>{{this.interes}}</td><td>{{this.desription}}</td> </tr>
+ {{/each}}
+ </tbody>
+ </table>
+ </div>
+</body>
+<script>
+ var $table = $('#fresh-table'),
+ $alertBtn = $('#alertBtn'),
+ full_screen = false;
+ 
+ $().ready(function(){
+ $table.bootstrapTable({
+ toolbar: ".toolbar",
+ 
+ showRefresh: false,
+ search: false,
+ showToggle: false,
+ showColumns: false,
+ pagination: true,
+ striped: false,
+ pageSize: 8,
+ pageList: [8,10,25,50,100],
+ 
+ formatShowingRows: function(pageFrom, pageTo, totalRows){
+ //do nothing here, we don't want to show the text "showing x of y from..." 
+ },
+ formatRecordsPerPage: function(pageNumber){
+ return pageNumber + " rows visible";
+ },
+ icons: {
+ refresh: 'fa fa-refresh',
+ toggle: 'fa fa-th-list',
+ columns: 'fa fa-columns',
+ detailOpen: 'fa fa-plus-circle',
+ detailClose: 'fa fa-minus-circle'
+ }
+ });
+ 
+ 
+ 
+ $(window).resize(function () {
+ $table.bootstrapTable('resetView');
+ });
+ 
+ 
+ window.operateEvents = {
+ 'click .like': function (e, value, row, index) {
+ alert('You click like icon, row: ' + JSON.stringify(row));
+ console.log(value, row, index);
+ },
+ 'click .edit': function (e, value, row, index) {
+ alert('You click edit icon, row: ' + JSON.stringify(row));
+ console.log(value, row, index); 
+ },
+ 'click .remove': function (e, value, row, index) {
+ $table.bootstrapTable('remove', {
+ field: 'id',
+ values: [row.id]
+ });
+ 
+ }
+ };
+ 
+ $alertBtn.click(function () {
+ alert("You pressed on Alert");
+ });
+ 
+ });
+ 
+ 
+ function operateFormatter(value, row, index) {
+ return [
+ '<a rel="tooltip" title="Like" class="table-action like" href="javascript:void(0)" title="Like">',
+ '<i class="fa fa-heart"></i>',
+ '</a>',
+ '<a rel="tooltip" title="Edit" class="table-action edit" href="javascript:void(0)" title="Edit">',
+ '<i class="fa fa-edit"></i>',
+ '</a>',
+ '<a rel="tooltip" title="Remove" class="table-action remove" href="javascript:void(0)" title="Remove">',
+ '<i class="fa fa-remove"></i>',
+ '</a>'
+ ].join('');
+ }
+ 
+ 
+ </script>
+<html>

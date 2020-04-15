@@ -1,0 +1,119 @@
+
+
+
+<head>
+    
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<title>
+  Профіль
+</title>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Головна <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/autusers">Користувачі</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/events">Події</a>
+      </li>
+     
+    </ul>
+    
+    <form class="form-inline my-2 my-lg-0">
+        <ul class="navbar-nav mr-auto"></ul>
+
+      <li class="nav-item">
+        <a class="btn btn-success my-2 my-sm-0" href="/logout">Вихід</a>
+      </li >
+         </ul>
+    </form>
+  </div>
+</nav>
+
+<body>
+     
+<div style="margin-top: 20px;" class="well">
+    
+    <div style="margin-top: 20px;" id="myTabContent" class="tab-content">
+      <form action="/crevent" method="POST">
+      <div class="tab-pane active in" >
+      
+       {{#each user}}
+           
+         
+            <input style="margin-left: 105.5px;" id="id" name="id" hidden="true" value="{{this.id}}">
+            <br>
+            <label style="margin-left: 20px;">Назва</label>
+        
+            <input style="margin-left: 94.5px; " type="text" value="" name="name" id="name"class="input-xlarge">
+ <br>
+          <label style="margin-left: 20px;" >Додати координати події </label><input type="checkbox" name="chkc" id="checkCoords" onclick="d()"> 
+            <br>
+           <label style="margin-left: 20px;" >Довгота</label>
+            <input hidden="true" style="margin-left: 84px;" type="number" step="0.000000000000001" id="lng"  name="lng"  class="input-xlarge">
+          <br>
+           <label style="margin-left: 20px;" >Широта</label>
+            <input hidden="true"  style="margin-left: 84px;" type="nuber"id="lat"step="0.000000000000001"  name="lat"  class="input-xlarge">
+          <br>
+         
+        <label style="margin-left: 20px;">Про подію</label>
+            <textarea style="margin-left: 54px;width:350px; heigth:150px" id="description" name="description"class="input-xlarge">
+            </textarea>
+             <br>
+    <label style="margin-left: 20px;">Тег події</label>          
+      <select  style="width: 150px;margin-left: 20px;" name="tag" class="form-control" aria-valuetext="">
+  <option> Ігри</option>
+  <option>Спорт</option>
+  <option>Кулінарія</option>
+  <option>Мандрівки</option>
+  <option>Вивчення мов</option>
+  <option>Фільми</option>
+  <option>Шопінг</option>
+  <option>Танці</option>
+  <option aria-checked="true">Не визначився</option>
+  </select>
+          <br>
+           
+      {{/each}}
+           
+        	    <div class="form-group ">
+
+ <input type="submit" value="Отправить" style="width: 250px;" target="_blank"  id="button" class="btn btn-primary btn-lg btn-block email-button" />
+  <a class="btn btn-success my-2 my-sm-0" href="/профіль">У профіль</a>
+  </div>
+        	</div>
+        </form>
+      
+      </div>
+     
+  </div>
+ 
+  </body>
+ <script>
+     let i=0
+     function d()
+     {
+         
+         if(i==0)
+         {
+     
+    
+         document.getElementById('lat').hidden=false
+         document.getElementById('lng').hidden=false;
+         i--
+         }
+         else{
+           
+         document.getElementById('lat').hidden=true
+         document.getElementById('lng').hidden=true;
+         i++
+         }
+     }
+ </script>

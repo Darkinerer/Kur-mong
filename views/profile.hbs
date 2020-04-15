@@ -1,0 +1,106 @@
+
+
+
+<head>
+    
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<title>
+  Профіль
+</title>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Головна <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/autusers">Користувачі</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/events">Події</a>
+      </li>
+     
+    </ul>
+    
+    <form class="form-inline my-2 my-lg-0">
+        <ul class="navbar-nav mr-auto"></ul>
+
+      <li class="nav-item">
+        <a class="btn btn-success my-2 my-sm-0" href="/logout">Вихід</a>
+      </li >
+         </ul>
+    </form>
+  </div>
+</nav>
+
+<body>
+     
+<div style="margin-top: 20px;" class="well">
+    
+    <div style="margin-top: 20px;" id="myTabContent" class="tab-content">
+      <form action="/profile" method="POST">
+      <div class="tab-pane active in" >
+      
+       {{#each user}}
+            <label style="margin-left: 20px;">ІD</label>
+         
+            <label style="margin-left: 105.5px;" id="id" name="id">{{this._id}}</label>
+              <input style="margin-left: 105.5px;" id="uid" type="text"name="uid" hidden="true" >
+            <br>
+            <label style="margin-left: 20px;">Ім'я</label>
+        
+            <input style="margin-left: 94.5px; " type="text" value="{{this.name}}" name="name" id="name"class="input-xlarge">
+           <br>
+            <label style="margin-left: 20px;" >Email</label>
+            <input  style="margin-left: 84px;" type="email"id="email"  name="email" value="{{this.email}}" class="input-xlarge">
+          <br>
+         <label style="margin-left: 20px;" >Вік</label>
+            <input  style="margin-left: 100px;" type="number" id="age" name="age" value="{{this.age}}" class="input-xlarge">
+          <br>
+            <label style="margin-left: 20px;">Пароль</label>
+            <input style="margin-left: 67px;" type="text" value="{{this.password}}" name ="password"class="input-xlarge">
+       <br>
+        <label style="margin-left: 20px;">Про себе</label>
+            <textarea style="margin-left: 54px;width:350px; heigth:150px" id="description" name="description"class="input-xlarge">{{this.desription}}
+            </textarea>
+             <br>
+    <label style="margin-left: 20px;">інтерес</label>          
+      <select  style="width: 150px;margin-left: 20px;" name="interes" class="form-control" aria-valuetext="{{this.interes}}">
+  <option> Ігри</option>
+  <option>Спорт</option>
+  <option>Кулінарія</option>
+  <option>Мандрівки</option>
+  <option>Вивчення мов</option>
+  <option>Фільми</option>
+  <option>Шопінг</option>
+  <option>Танці</option>
+  <option aria-checked="true">Не визначився</option>
+  </select>
+          <br>
+             <div class="form-group ">
+
+ <input type="submit" value="Отправить" style="width: 250px;" target="_blank"  id="button" class="btn btn-primary btn-lg btn-block email-button" />
+  <a class="btn btn-success my-2 my-sm-0" style="width: 250px;" href="/crevent">Створити подію</a>
+  
+  </div>
+        	</div>
+      {{/each}}
+        </form>
+      
+       <form action="/myevents" method="get">
+      
+       <input type="submit" value="Події" class="btn btn-success my-2 my-sm-0" style="width: 250px;"></a>
+      
+   </form>
+        
+
+      
+      </div>
+     
+  </div>
+ 
+  </body>

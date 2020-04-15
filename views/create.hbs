@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Добавление пользователя</title>
+    <meta charset="utf-8" />
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<title>
+  Профіль
+</title>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Головна <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/users">Користувачі</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/events">Події</a>
+      </li>
+     
+    </ul>
+    
+    <form class="form-inline my-2 my-lg-0">
+        <ul class="navbar-nav mr-auto"></ul>
+
+      <li class="nav-item">
+        <a class="btn btn-success my-2 my-sm-0" href="/login">Вхід</a>
+      </li >
+         </ul>
+    </form>
+  </div>
+</nav>
+
+<body>
+
+
+   <div class="container" style="margin-left: 600px;">
+ <div class="row main-form">
+ <form class=""  action="/create" method="POST">
+ 
+ <div class="form-group">
+ <label for="age" class="cols-sm-2 control-label">Email</label>
+ <div class="cols-sm-10">
+ <div class="input-group">
+ <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+ <input type="email"  class="form-control"  name="email" id="email" placeholder="Email"/>
+ </div>
+ </div>
+ </div>
+
+<div class="form-group">
+ <label for="age" class="cols-sm-2 control-label">Пароль</label>
+ <div class="cols-sm-10">
+ <div class="input-group">
+ <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+ <input type="password" class="form-control" name="password" id="password" placeholder="Password"/>
+ </div>
+ </div>
+ </div>
+ <div class="form-group">
+ <label for="name" class="cols-sm-2 control-label">Ім'я </label>
+ <div class="cols-sm-10">
+ <div class="input-group">
+ <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+ <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name"/>
+ </div>
+ </div>
+ </div>
+
+<div class="form-group">
+ <label for="age" class="cols-sm-2 control-label">Вік</label>
+ <div class="cols-sm-10">
+ <div class="input-group">
+ <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+ <input type="number" max="99" min="10" class="form-control" name="age" id="age" placeholder="Enter your Age"/>
+ </div>
+ </div>  
+ </div>
+
+<div class="form-group">
+ <label for="age" class="cols-sm-2 control-label">Інтерес</label>
+ <div class="cols-sm-10">
+ <div class="input-group">
+ <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+     <select  name="interes" class="form-control" >
+  <option> Ігри</option>
+  <option>Спорт</option>
+  <option>Кулінарія</option>
+  <option>Мандрівки</option>
+  <option>Вивчення мов</option>
+  <option>Фільми</option>
+  <option>Шопінг</option>
+  <option>Танці</option>
+  <option >Не визначився</option>
+  </select>
+ </div>
+ </div>  
+ </div>
+
+<div class="form-group">
+ <label for="name" class="cols-sm-2 control-label">Про себе</label>
+ <div class="cols-sm-10">
+ <div class="input-group">
+ <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+  <textarea  id="description" name="description"class="form-control"> </textarea>
+ </div>
+ </div>
+ </div>
+ <div class="form-group ">
+     
+
+ <input type="submit" value="Отправить" onclick="check()" target="_blank"  id="button" class="btn btn-primary btn-lg btn-block login-button" />
+  </div>
+ 
+ </form>
+ </div>
+ </div>
+</body>
+
+</html>

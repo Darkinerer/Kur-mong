@@ -1,0 +1,99 @@
+<head>
+    
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<title>
+  Профіль
+</title>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Головна <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/autusers">Користувачі</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/events">Події</a>
+      </li>
+     
+    </ul>
+    
+    <form class="form-inline my-2 my-lg-0">
+        <ul class="navbar-nav mr-auto"></ul>
+
+      <li class="nav-item">
+        <a class="btn btn-success my-2 my-sm-0" href="/logout">Вихід</a>
+      </li >
+         </ul>
+    </form>
+  </div>
+</nav>
+<body>
+    
+    
+       <div id="map"></div>
+      
+	
+</body>
+
+ <script>
+    
+	function initMap() { 
+	var c=0;
+		var element = document.getElementById('map');
+		var options = {
+			zoom: 5,
+			center: {lat: 55.7558, lng: 37.6173},
+		};
+
+	var myMap = new google.maps.Map(element, options);
+
+
+
+
+	{{#each allUsers}}
+    if({{lat}}=undefined && {{lng}}=undefined)
+    {
+        
+			addMarker({{lat}}, {{lng}},
+			 {{name}},{{tag}},{{description}},{{user}} )
+    }
+         {{/each}}
+         
+
+if(c=0)
+{
+    var myMap = new google.maps.Map(element, options);
+}
+
+		function addMarker(coordsx,coordsy,name,tag,desrition,user) {
+			c+=1;
+			const marker = new google.maps.Marker({
+                    position:{ lng:coordsy,
+					lat:coordsx},
+                    map: myMap
+                });
+				
+                    var InfoWindow = new google.maps.InfoWindow({
+                        content: '<h3 Ім`я>'+name+'</h3><br><h3> Код користувача: '+user+'</h3><br><h3 Тег: >'+tag+'</h3> <br><p>'+ desrition+'</p>'
+                    });
+
+                    marker.addListener('click', function(){
+                        InfoWindow.open(myMap, marker);
+                    });
+                
+            }
+    }
+    </script>
+
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChiG5176-s2e2q2eJ0101wkK9wRYjf_2I&callback=initMap">
+    </script>
+
+
+
