@@ -231,12 +231,14 @@ app.post("/fevcode",function (req,res) {
         function(err, result){
              
             console.log(result);
-            req.session.email=null;
+            req.session.email=email;
             res.redirect("/")
         }
     );
   });
-
+app.get("/create",function(req,res){
+    res.render("create.hbs")
+})
 
 app.post("/create",  function (req, res) {
     const o = req.body.email
@@ -324,6 +326,22 @@ app.post("/deleteuser/:id", function(req, res){
      });
    });
 
+app.get("/fusers",function(req,res)
+{
+    collection.find().toArray(function(err,data){
+        res.render("fusers.hbs",{
+            users:data
+        })
+    })
+})
+
+app.post("/fuscode",function(req,res){
+    collection.find({_id : new ObjectId(req.body.id)}).toArray(function(err,data){
+        res.render("fusers.hbs",{
+            users:data
+        })
+    })
+})
 
 app.post("/delete/:id", function(req, res){
           

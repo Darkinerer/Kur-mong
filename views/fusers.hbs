@@ -157,30 +157,11 @@ a.boxclose {
 <body>
     <div style="margin-top: 20px;margin-left:20px;margin-right:20px">
     <h1>Список користувачів</h1>    
-    <form action="/finteres" method="post">
-            <label>Показати користувачів за інтересом </label> 
-  <select  style="width: 150px;margin-left: 20px;" name="interes" id="interes"class="form-control" >
-  <option>Ігри</option>
-  <option>Спорт</option>
-  <option>Кулінарія</option>
-  <option>Мандрівки</option>
-  <option>Вивчення мов</option>
-  <option>Фільми</option>
-  <option>Шопінг</option>
-  <option>Танці</option>
-  <option aria-checked="true">Не визначився</option>
-  </select>
-  <br>
-  <input type="submit" value="Фільтрувати за інтересом" style="width: 350px;"  target="_blank"  id="button" class="btn btn-primary btn-lg btn-block email-button" />
-            </form>
-             <form action="/fage" method="post">
-            <label>Показати користувачів віком від:</label> 
-            <input type="number" name="sage" class="form-control" style="width: 100px;" aria-valuemin="5" value="10" aria-valuemax="130" id="sage">
+    <form action="/fuscode" method="post">
+            <label>Показати користувача за кодом </label> 
+            <input type="text" name="id" class="form-control" style="width: 350px;margin" id="id">
             <br>
-            <label>До:</label> <input type="number" class="form-control" style="width: 100px;" aria-valuemax="130" aria-valuemin="5" value="25" name="eage" id="eage">
- 
-  <br>
-  <input type="submit" value="Фільтрувати за віком" style="width: 250px;" target="_blank"  id="button" class="btn btn-primary btn-lg btn-block email-button" />
+  <input type="submit" value="Шукати" style="width: 250px;"  target="_blank"  id="button" class="btn btn-primary btn-lg btn-block email-button" />
             </form>
  
  <table id="fresh-table" class="table" style="background: white;">
